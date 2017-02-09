@@ -1,0 +1,66 @@
+
+<div class="span9">
+
+    <h1 class="page-title">
+        <i class="icon-th-list"></i>
+        定价计划
+    </h1>
+
+
+
+
+
+
+    <div class="widget">
+
+        <div class="widget-header">
+            <h3>有效得信息</h3>
+        </div> <!-- /widget-header -->
+
+        <div class="widget-content">
+
+            <div class="pricing-plans plans-3">
+          <volist name="item" id="item">
+                <div class="plan-container">
+                    <div class="plan">
+                        <div class="plan-header">
+                            <div class="plan-title">
+                                {$item.item_id}
+                            </div> <!-- /plan-title -->
+                            <div class="plan-price">
+                                {$item.item_name}<span class="term"></span>
+                            </div> <!-- /plan-price -->
+                        </div> <!-- /plan-header -->
+                        <div class="plan-features">
+                            <ul>
+                                <li>团队：<strong>{$item.team}</strong> </li>
+                                <li>状态：<strong>{$item.item_state}</strong></li>
+                            </ul>
+                        </div>
+                        <div class="plan-actions">
+                            <a href="{:U('item/check?item_id='.$item['item_id'])}" class="btn">查看</a>
+                        </div> <!-- /plan-actions -->
+                    </div> <!-- /plan -->
+                </div> <!-- /plan-container -->
+          </volist>
+
+            </div> <!-- /pricing-plans -->
+
+        </div> <!-- /widget-content -->
+
+    </div> <!-- /widget -->
+
+
+
+
+    <div class="widget">
+
+        <div class="widget-header">
+            <h3>账户信息</h3>
+        </div> <!-- /widget-header -->
+
+        <div class="widget-content">
+            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div> <!-- /widget-content -->
+
+    </div> <!-- /widget -->

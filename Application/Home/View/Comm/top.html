@@ -1,0 +1,38 @@
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="brand" href="./">Adminia Admin</a>
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                    <li>
+                        <a href="#"><span class="badge badge-warning">7</span></a>
+                    </li>
+
+                    <li class="divider-vertical"></li>
+
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle " href="#">
+                           <?php echo $_SESSION['userinfo']['user_name'] ?>
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="#"><i class="icon-user"></i> 个人设置  </a>
+                            </li>
+
+                            <li>
+                                <a href="#"><i class="icon-lock"></i> 修改密码</a>
+                            </li>
+
+                            <li class="divider"></li>
+
+                            <li>
+                                <a href="{:U('Home/Comm/login')}"><i class="icon-off"></i> 注销</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div> <!-- /nav-collapse -->
+        </div> <!-- /container -->
+    </div> <!-- /navbar-inner -->
+</div> <!-- /navbar -->
