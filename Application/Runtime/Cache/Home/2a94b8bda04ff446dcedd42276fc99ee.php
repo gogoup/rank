@@ -33,32 +33,11 @@
             <div class="nav-collapse">
                 <ul class="nav pull-right">
                     <li>
-                        <a href="#"><span class="badge badge-warning">7</span></a>
+                        <a href="<?php echo U('Home/Common/logout');?>"><span class="badge badge-warning">退出</span></a>
                     </li>
 
                     <li class="divider-vertical"></li>
 
-                    <li class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle " href="#">
-                           <?php echo $_SESSION['userinfo']['user_name'] ?>
-                        </a>
-
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="#"><i class="icon-user"></i> 个人设置  </a>
-                            </li>
-
-                            <li>
-                                <a href="#"><i class="icon-lock"></i> 修改密码</a>
-                            </li>
-
-                            <li class="divider"></li>
-
-                            <li>
-                                <a href="<?php echo U('Home/Comm/login');?>"><i class="icon-off"></i> 注销</a>
-                            </li>
-                        </ul>
-                    </li>
                 </ul>
             </div> <!-- /nav-collapse -->
         </div> <!-- /container -->
@@ -70,9 +49,9 @@
 <div id="content">
 	
 	<div class="container">
-		
+        <?php $a=$_SESSION['userinfo']['r_id'] ?>
 		<div class="row">
-		<div class="span3">
+            <?php if( $a < 3): ?><div class="span3">
 
     <div class="account-container">
 
@@ -138,7 +117,73 @@
     </ul>
 
 </div> <!-- /span3 -->
+             <?php else: ?>
+                <div class="span3">
 
+    <div class="account-container">
+
+        <div class="account-avatar">
+            <img src="/rank/Public/img/headshot.png" alt="" class="thumbnail" />
+        </div> <!-- /account-avatar -->
+
+        <div class="account-details">
+
+            <span class="account-name"><?php echo $_SESSION['userinfo']['user_name'] ?></span>
+
+            <span class="account-role">用户等级</span>
+
+						<span class="account-actions">
+							<a href="javascript:;">简况</a> |
+
+							<a href="javascript:;">编辑设置</a>
+						</span>
+
+        </div> <!-- /account-details -->
+
+    </div> <!-- /account-container -->
+
+    <hr />
+
+    <ul id="main-nav" class="nav nav-tabs nav-stacked">
+
+        <li class="active">
+            <a href="./">
+                <i class="icon-home"></i>
+                普通管理
+            </a>
+        </li>
+
+        <li>
+            <a href="<?php echo U('Home/Items/index');?>">
+                <i class="icon-th-list"></i>
+                项目管理
+            </a>
+        </li>
+
+        <li>
+            <a href="<?php echo U('Home/Link/index');?>">
+                <i class="icon-pushpin"></i>
+                域名管理
+            </a>
+        </li>
+
+        <li>
+            <a href="<?php echo U('Home/Discuss/index');?>">
+                <i class="icon-th-list"></i>
+                评论管理
+            </a>
+        </li>
+
+        <li>
+            <a href="<?php echo U('Home/User/Index');?>">
+                <i class="icon-th-large"></i>
+                用户管理
+                <span class="label label-warning pull-right">5</span>
+            </a>
+        </li>
+    </ul>
+
+</div> <!-- /span3 --><?php endif; ?>
 
 			<!DOCTYPE html>
 <div class="span9">
