@@ -25,10 +25,13 @@
 <div id="content">
 	
 	<div class="container">
-		
+        <?php $a=$_SESSION['userinfo']['r_id'] ?>
 		<div class="row">
-		<include file="Comm:left" />
-
+            <if condition="  $a  lt 3">
+                <include file="Comm:leftlv12" />
+             <else />
+                <include file="Comm:leftlv3" />
+            </if>
 
 			{__CONTENT__}
 			

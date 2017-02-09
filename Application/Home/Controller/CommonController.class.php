@@ -49,11 +49,22 @@ class CommonController extends Controller
         $pwd=md5($_POST['pwd']);
         $User=D('User');
         $msg=$User->check($name,$pwd);
-        if($msg)
-        {
-            $this->success("登录成功",U('Index/index'));
+        if($_SESSION['userinfo']['u_state']) {
+            if ($msg) {
+                $this->success("登录成功", U('Index/index'));
+            } else {
+                $this->error("登录失败，请联系管理员检查账号");
+            }
         }else{
-            $this->error("登录失败，请联系管理员检查账号");
+            $this->error("您的账户已被禁用，请联系管理员");
         }
+    }
+
+    public function logout()
+    {
+        $a=$_SESSION;
+        session_destroy();
+        header("Location: log");
+        exit;
     }
 }
