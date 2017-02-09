@@ -23,10 +23,8 @@ class CommonController extends Controller
           $user_id='false';
        };
         if( $user_id == 'false'){
-            if(!empty($_POST['name']) && $user_id=='false')
+            if(empty($_POST['name']) && $user_id=='false')
             {
-                $this->login();
-            }else{
                 $this->log();
             }
         }
