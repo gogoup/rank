@@ -81,8 +81,16 @@ class CommonController extends Controller
         if($role>2){
             $projects=D('Project');
             $where['u_id']=$_SESSION['userinfo']['u_id'];
-            $allProject=$projects->allProject($where);
-            $this->assign('project',$allProject);
+          $allPID=$projects->allProjectId($where);
+            $allProject=array();
+            foreach($allPID as $key=>$val)
+            {
+                $allP['p_id']=$val['p_id'];
+                $project=$projects->oneProject($allP);
+                $allProject[]=$project;
+            }
+                  $this->assign('project',$allProject);
+
         }
 
     }
