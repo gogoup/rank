@@ -43,4 +43,16 @@ class UserModel extends Model
         return $teaminfo;
     }
 
+    /**
+     * @param $u_id
+     * @return mixed
+     * 获取员工信息
+     * 目前相对简陋所以返回数组格式
+     */
+    public function getuser($u_id)
+    {
+     $userinfo=$this->User->where('u_id='.$u_id)->find();
+        return $userinfo;
+    }
+
 }
