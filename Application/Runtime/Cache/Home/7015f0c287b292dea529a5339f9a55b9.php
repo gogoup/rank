@@ -61,9 +61,15 @@
 
         <div class="account-details">
 
-            <span class="account-name"><?php echo $_SESSION['userinfo']['u_name'] ?></span>
+            <span class="account-name"><?php echo $_SESSION['userinfo']['user_name'] ?></span>
 
-            <span class="account-role"><?php echo ($r_name); ?></span>
+            <span class="account-role">用户等级</span>
+
+						<span class="account-actions">
+							<a href="javascript:;">简况</a> |
+
+							<a href="javascript:;">编辑设置</a>
+						</span>
 
         </div> <!-- /account-details -->
 
@@ -76,7 +82,7 @@
         <li class="active">
             <a href="./">
                 <i class="icon-home"></i>
-               首页
+               系统导航
             </a>
         </li>
 
@@ -90,17 +96,24 @@
         <li>
             <a href="<?php echo U('Home/Link/index');?>">
                 <i class="icon-pushpin"></i>
-              成员管理
+               域名管理
             </a>
         </li>
 
         <li>
             <a href="<?php echo U('Home/Discuss/index');?>">
                 <i class="icon-th-list"></i>
-                个人信息
+                评论管理
             </a>
         </li>
 
+        <li>
+            <a href="<?php echo U('Home/User/Index');?>">
+                <i class="icon-th-large"></i>
+               用户管理
+                <span class="label label-warning pull-right">5</span>
+            </a>
+        </li>
     </ul>
 
 </div> <!-- /span3 -->
@@ -115,10 +128,15 @@
 
         <div class="account-details">
 
-            <span class="account-name"><?php echo $_SESSION['userinfo']['u_name'] ?></span>
+            <span class="account-name"><?php echo $_SESSION['userinfo']['user_name'] ?></span>
 
-            <span class="account-role"><?php echo ($r_name); ?></span>
+            <span class="account-role">用户等级</span>
 
+						<span class="account-actions">
+							<a href="javascript:;">简况</a> |
+
+							<a href="javascript:;">编辑设置</a>
+						</span>
 
         </div> <!-- /account-details -->
 
@@ -127,12 +145,6 @@
     <hr />
 
     <ul id="main-nav" class="nav nav-tabs nav-stacked">
-        <li class="active">
-            <a href="<?php echo U('Index/index');?>">
-                <i class="icon-home"></i>
-                首页
-            </a>
-        </li>
    <?php if(is_array($project)): $i = 0; $__LIST__ = $project;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$menu): $mod = ($i % 2 );++$i;?><li class="active">
             <a href="./">
                 <i class="icon-home"></i>
@@ -144,26 +156,43 @@
 
 </div> <!-- /span3 --><?php endif; ?>
 
-			<!DOCTYPE html>
-<div class="span9">
-	
-	<h1 class="page-title">
-		<i class="icon-home"></i>
-		内容概况					
-	</h1>
-	
-	<div class="widget">
-							
-		<div class="widget-header">
-			<i class="icon-signal"></i>
-			<h3>项目名称</h3>
-		</div> <!-- /widget-header -->
-											
-		<div class="widget-content">
-		我嘞个去 
-		</div> <!-- /widget-content -->
-	</div>
-</div> <!-- /span9 -->
+			<div class="span3">
+
+    <div class="account-container">
+
+        <div class="account-avatar">
+            <img src="/rank/Public/img/headshot.png" alt="" class="thumbnail" />
+        </div> <!-- /account-avatar -->
+
+        <div class="account-details">
+
+            <span class="account-name"><?php echo $_SESSION['userinfo']['user_name'] ?></span>
+
+            <span class="account-role">用户等级</span>
+
+						<span class="account-actions">
+							<a href="javascript:;">简况</a> |
+
+							<a href="javascript:;">编辑设置</a>
+						</span>
+
+        </div> <!-- /account-details -->
+
+    </div> <!-- /account-container -->
+
+    <hr />
+
+    <ul id="main-nav" class="nav nav-tabs nav-stacked">
+   <?php if(is_array($project)): $i = 0; $__LIST__ = $project;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$menu): $mod = ($i % 2 );++$i;?><li class="active">
+            <a href="./">
+                <i class="icon-home"></i>
+                <?php echo ($menu["p_id"]); echo ($menu["p_name"]); ?>
+            </a>
+        </li><?php endforeach; endif; else: echo "" ;endif; ?>
+
+    </ul>
+
+</div> <!-- /span3 -->
 			
 			
 		</div> <!-- /row -->
