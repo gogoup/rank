@@ -16,11 +16,10 @@ class  ProjectModel extends Model
     /**
      * @param $where
      * @return mixed    二维数组
-     * 返回符合条件的所有项目ID
+     * 返回符合条件的所有项目
      */
-    public function allProjectId($where)
+    public function allProject($where)
     {
-        $a=M('Project');
         return $this->UserProject->where($where)->select();
     }
 
@@ -29,7 +28,7 @@ class  ProjectModel extends Model
      * @return mixed  一维数组
      * 返回符合条件的项目信息
      */
-    public function allProject($where)
+    public function oneProject($where)
     {
         return $this->Project->where($where)->find();
     }
