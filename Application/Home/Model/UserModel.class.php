@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Administrator
- * Date: 2017/1/16
- * Time: 10:39
- * 用户表操作
- */
 namespace Home\Model;
 use Think\Model;
 

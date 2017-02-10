@@ -8,15 +8,9 @@
 
         <div class="account-details">
 
-            <span class="account-name"><?php echo $_SESSION['userinfo']['user_name'] ?></span>
+            <span class="account-name"><?php echo $_SESSION['userinfo']['u_name'] ?></span>
 
-            <span class="account-role">用户等级</span>
-
-						<span class="account-actions">
-							<a href="javascript:;">简况</a> |
-
-							<a href="javascript:;">编辑设置</a>
-						</span>
+            <span class="account-role">{$r_name}</span>
 
         </div> <!-- /account-details -->
 
@@ -29,7 +23,7 @@
         <li class="active">
             <a href="./">
                 <i class="icon-home"></i>
-               系统导航
+               首页
             </a>
         </li>
 
@@ -43,24 +37,17 @@
         <li>
             <a href="{:U('Home/Link/index')}">
                 <i class="icon-pushpin"></i>
-               域名管理
+              成员管理
             </a>
         </li>
 
         <li>
             <a href="{:U('Home/Discuss/index')}">
                 <i class="icon-th-list"></i>
-                评论管理
+                个人信息
             </a>
         </li>
 
-        <li>
-            <a href="{:U('Home/User/Index')}">
-                <i class="icon-th-large"></i>
-               用户管理
-                <span class="label label-warning pull-right">5</span>
-            </a>
-        </li>
     </ul>
 
 </div> <!-- /span3 -->
