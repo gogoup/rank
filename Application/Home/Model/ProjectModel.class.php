@@ -33,6 +33,11 @@ class  ProjectModel extends Model
         return $this->Project->where($where)->select();
     }
 
+    public function allProjectCount($where)
+    {
+        return $this->Project->where($where)->count();
+    }
+
     /**
      * @param $where
      * @return mixed  一维数组
