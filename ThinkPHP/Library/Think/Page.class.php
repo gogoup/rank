@@ -16,7 +16,7 @@ class Page{
     public $parameter; // 分页跳转时要带的参数
     public $totalRows; // 总行数
     public $totalPages; // 分页总页面数
-    public $rollPage   = 11;// 分页栏每页显示的页数
+    public $rollPage   = 10;// 分页栏每页显示的页数
 	public $lastSuffix = true; // 最后一页是否显示总页数
 
     private $p       = 'p'; //分页参数名
@@ -25,11 +25,11 @@ class Page{
 
 	// 分页显示定制
     private $config  = array(
-        'header' => '<span class="rows">共 %TOTAL_ROW% 条记录</span>',
-        'prev'   => '<<',
-        'next'   => '>>',
-        'first'  => '1...',
-        'last'   => '...%TOTAL_PAGE%',
+        'header' => '<span class="/rows"/>共%HEADER%条记录</span>',
+        'prev'   => '上一页',
+        'next'   => '下一页',
+        'first'  => '首页',
+        'last'   => '末页%TOTAL_PAGE%',
         'theme'  => '%FIRST% %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END%',
     );
 
@@ -89,7 +89,7 @@ class Page{
         /* 计算分页临时变量 */
         $now_cool_page      = $this->rollPage/2;
 		$now_cool_page_ceil = ceil($now_cool_page);
-		$this->lastSuffix && $this->config['last'] = $this->totalPages;
+		$this->lastSuffix && $this->config['last'] = $this->totalPages;    //不是bug  实例化是加 $Page->lastSuffix = false;  不影响
 
         //上一页
         $up_row  = $this->nowPage - 1;
@@ -108,7 +108,7 @@ class Page{
         //最后一页
         $the_end = '';
         if($this->totalPages > $this->rollPage && ($this->nowPage + $now_cool_page) < $this->totalPages){
-            $the_end = '<a class="end" href="' . $this->url($this->totalPages) . '">' . $this->config['last'] . '</a>';
+            $the_end = '<a class="end" href="' . $this->url($this->totalPages) . '">' .$this->config['last'] . '</a>';
         }
 
         //数字连接
