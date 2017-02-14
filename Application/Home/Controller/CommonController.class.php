@@ -83,11 +83,15 @@ class CommonController extends Controller
             $where['u_id']=$_SESSION['userinfo']['u_id'];
           $allPID=$projects->allProjectId($where);
             $allProject=array();
+            $team_id=$_SESSION['userinfo']['team_id'];
             foreach($allPID as $key=>$val)
             {
                 $allP['p_id']=$val['p_id'];
                 $project=$projects->oneProject($allP);
-                $allProject[]=$project;
+               if($project['team_id'] == $team_id)
+               {
+                   $allProject[]=$project;
+               }
             }
                   $this->assign('project',$allProject);
 

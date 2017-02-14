@@ -35,7 +35,7 @@ class  ProjectModel extends Model
 
     public function allProjectCount($where)
     {
-        return $this->Project->where($where)->count();
+        return $this->where($where)->count();
     }
 
     /**

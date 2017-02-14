@@ -28,13 +28,18 @@
         </li>
    <volist name="project" id="menu">
         <li class="active">
-            <a href="./">
-                <i class="icon-home"></i>
-                {$menu.p_id}{$menu.p_name}
+            <a href="{:U('Links/index',array('p_id'=>$menu['p_id']))}">
+                <i class="icon-pushpin"></i>
+                 {$menu.p_name}
             </a>
         </li>
    </volist>
-
+        <li class="active">
+            <a href="{:U('Index/index')}">
+                <i class="icon-user"></i>
+                个人信息
+            </a>
+        </li>
     </ul>
 
 </div> <!-- /span3 -->
