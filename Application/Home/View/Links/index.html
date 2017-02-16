@@ -1,59 +1,99 @@
-<!DOCTYPE html>
 <div class="span9">
 
     <h1 class="page-title">
-        <i class="icon-th-list"></i>
-        项目管理
+        <i class="icon-pushpin"></i>
+        {$project}
     </h1>
 
-    <div class="widget widget-table">
 
-        <div class="widget-header">
-            <i class="icon-th-list"></i>
-            <h3>链接表</h3>
-            <select style="float: right; margin: 0.5rem 9rem 0rem -1rem">
-                <option></option>
-                <option></option>
-                <option></option>
-                <option></option>
-            </select>
-            <button type="button" class="btn btn-small btn-warning" style="float: right; margin: 0.5rem -18rem 0 0rem">检索</button>
-        </div> <!-- /widget-header -->
+    <div class="row">
 
-        <div class="widget-content">
-            <table class="table table-striped table-bordered">
-                <thead>
-                <tr>
-                    <th>项目Id</th>
-                    <th>项目名</th>
-                    <th>&nbsp;</th>
-                </tr>
-                </thead>
-                <tbody>
-                <volist name="list" id="vo">
-                    <tr>
-                        <td>{$vo.l_id}</td>
-                        <td>{$vo.l_link}</td>
-                        <td class="action-td" style="width: 16rem;">
-                            <a href="{:U('Keyword/index',array('l_id'=>$vo['l_id']))}" class="btn btn-small btn-warning">
-                                关键字管理
-                            </a>
-                            <a href="javascript:;" class="btn btn-small btn-warning" >
-                                链接排名
-                            </a>
-                            <a href="javascript:;" class="btn btn-small">
-                                修改
-                            </a>
-                            <a href="javascript:;" class="btn btn-small ">
-                                删除
-                            </a>
-                        </td>
-                    </tr>
-                </volist>
-                </tbody>
-            </table>
-        </div> <!-- /widget-content -->
-        <div class="black2">{$page}</div>
-    </div>
+        <div class="span9">
 
-</div> <!-- /span9 -->
+            <div class="widget">
+                <div class="widget-content">
+                    <div class="tabbable">
+                        <ul class="nav nav-tabs widget-header">
+                            <li class="active">
+                                <a href="#1" data-toggle="tab">域名</a>
+                            </li>
+                            <li><a href="#2" data-toggle="tab">关键词</a></li>
+                            <li><a href="#3" data-toggle="tab">排名概况</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="1">
+
+                                <div class="widget widget-table">
+
+                                    <div class="widget-header">
+                                        <i class="icon-th-list"></i>
+                                        <h3>链接表</h3>
+                                        <input type="text" style="float: right; margin: 0.5rem 9rem 0rem -1rem"
+                                               id="condition1">
+                                        <input type="hidden" id="linkurl" value="{:U('Links/index',array('p_id'=>$list[0]['p_id']))}">
+                                        <button id="checklink" type="button" class="btn btn-small btn-warning"
+                                                style="float: right; margin: 0.5rem -18rem 0 0rem">检索</button>
+                                    </div> <!-- /widget-header -->
+
+                                    <div class="widget-content">
+                                        <table class="table table-striped table-bordered">
+                                            <thead>
+                                            <tr>
+                                                <th>链接Id</th>
+                                                <th>域名</th>
+                                                <th>&nbsp;</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <volist name="list1" id="vo1">
+                                                <tr>
+                                                    <td>{$vo1.l_id}</td>
+                                                    <td>{$vo1.l_link}</td>
+                                                    <td class="action-td" style="width: 16rem;">
+                                                        <a href="{:U('Rank/link',array('l_id'=>$vo1['l_id']))}" class="btn btn-small btn-warning" target="_blank">
+                                                            排名
+                                                        </a>
+                                                        <a href="javascript:;" class="btn btn-small">
+                                                            修改
+                                                        </a>
+                                                        <a href="javascript:;" class="btn btn-small ">
+                                                            删除
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            </volist>
+                                            </tbody>
+                                        </table>
+                                    </div> <!-- /widget-content -->
+                                    <div class="black2">{$page1}</div>
+                                </div>
+
+
+                            </div>
+
+                            <div class="tab-pane" id="2">
+                                <include file="Keyword:index" />
+                            </div>
+
+                            <div class="tab-pane" id="3">
+                                <include file="rank" />
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+
+
+
+
+
+
+                </div> <!-- /widget-content -->
+
+            </div> <!-- /widget -->
+
+        </div> <!-- /span9 -->

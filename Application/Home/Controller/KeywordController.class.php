@@ -2,29 +2,26 @@
 namespace Home\Controller;
 use Think\Controller;
 
-class KeywordController extends  CommonController
+class KeywordController extends Controller
 {
     public function Index()
     {
-        $l_id=$_GET['l_id'];
-
+        $p_id=$_GET['p_id'];
         $words=D('Keyword');
-        $where['l_id']=$l_id;
-        $keywords=$words->getall($where);
-        $count=count($keywords);
-        $Page=new \Think\Page($count,1);
-        $show=$Page->show();
-        $list = $words->where($where)->order('k_id')->limit($Page->firstRow.','.$Page->listRows)->select();
-        $lists=array();
-        foreach($list as $key=>$value)
+        if($_GET['condition2'])
         {
-         $rank=$words->getrank($value['k_id']);
-            $list[$key]['rank']=$rank;
-            $lists=$list;
+            $list=$words->getLikeKeyword($p_id,$_GET['condition2']);
+            $list2=json_encode($list);
+            echo $list2;
+        }else{
+            $where['p_id']=$p_id;
+            $keywords=$words->getall($where);
+            $count=count($keywords);
+            $Page=new \Think\Page($count,50);
+            $show=$Page->show();
+            $list = $words->where($where)->order('k_id')->limit($Page->firstRow.','.$Page->listRows)->select();
+            $this->assign('page',$show);
+            $this->assign('list',$list);
         }
-        $this->assign('list',$lists);
-        $this->assign('page',$show);
-
-        $this->display();
     }
 }

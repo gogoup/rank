@@ -1,23 +1,12 @@
-<!DOCTYPE html>
-<div class="span9">
-
-    <h1 class="page-title">
-        <i class="icon-th-list"></i>
-        项目管理
-    </h1>
 
     <div class="widget widget-table">
 
         <div class="widget-header">
             <i class="icon-th-list"></i>
             <h3>关键字表</h3>
-            <select style="float: right; margin: 0.5rem 9rem 0rem -1rem">
-                <option></option>
-                <option></option>
-                <option></option>
-                <option></option>
-            </select>
-            <button type="button" class="btn btn-small btn-warning" style="float: right; margin: 0.5rem -18rem 0 0rem">检索</button>
+            <input type="text" style="float: right; margin: 0.5rem 9rem 0rem -1rem" id="condition2">
+            <input type="hidden" id="keyurl" value="{:U('Keyword/index',array('p_id'=>$list[0]['p_id']))}">
+            <button id="checkkey" type="button" class="btn btn-small btn-warning" style="float: right; margin: 0.5rem -18rem 0 0rem">检索</button>
         </div> <!-- /widget-header -->
 
         <div class="widget-content">
@@ -26,17 +15,18 @@
                 <tr>
                     <th>ID</th>
                     <th>关键词</th>
-                    <th>排名</th>
                     <th>&nbsp;</th>
                 </tr>
                 </thead>
-                <tbody>
+                <tbody id="keybody">
                 <volist name="list" id="vo">
                     <tr>
                         <td>{$vo.k_id}</td>
                         <td>{$vo.keyword}</td>
-                        <td>{$vo.rank}</td>
                         <td class="action-td" style="width: 16rem;">
+                            <a href="{:U('Rank/keyword',array('k_id'=>$vo['k_id']))}" class="btn btn-small btn-warning" target="_blank">
+                                排名
+                            </a>
                             <a href="javascript:;" class="btn btn-small">
                                 修改
                             </a>
@@ -51,5 +41,3 @@
         </div> <!-- /widget-content -->
         <div class="black2">{$page}</div>
     </div>
-
-</div> <!-- /span9 -->

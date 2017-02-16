@@ -21,10 +21,9 @@ class KeywordModel extends Model
         return $this->where($where)->select();
     }
 
-    public function getrank($k_id)
+    public  function getLikeKeyword($p_id,$keyword)
     {
-        $sql="select rank from rank_ranking where k_id=".$k_id." order by time desc limit 1";
-       $aa= $this->rank->query($sql);
-        return $aa[0]['rank'];
+        $sql="select * from rank_keyword where p_id=".$p_id." and  keyword like '%".$keyword."%'";
+        return $this->query($sql);
     }
 }

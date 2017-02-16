@@ -33,6 +33,11 @@ class  ProjectModel extends Model
         return $this->Project->where($where)->select();
     }
 
+    /**
+     * @param $where
+     * @return mixed
+     * 返回符合条件的数据的数量
+     */
     public function allProjectCount($where)
     {
         return $this->where($where)->count();
@@ -48,7 +53,15 @@ class  ProjectModel extends Model
         return $this->Project->where($where)->find();
     }
 
-
+    /**
+     * @param $where
+     * @return mixed
+     * 返回符合条件的项目名
+     */
+    public function getProname($where)
+    {
+        return $this->where($where)->getField('p_name');
+    }
 
 
 

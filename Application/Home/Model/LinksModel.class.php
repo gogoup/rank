@@ -21,6 +21,11 @@ class LinksModel extends Model
         return $this->Link->where($where)->select();
     }
 
+    public function getLikeLink($where,$where2)
+    {
+        $sql="select * from rank_links where l_link like 'www.".$where2."%' and p_id=".$where;
+        return $this->query($sql);
+    }
 
 
 
