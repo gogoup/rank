@@ -35,7 +35,6 @@ class UserModel extends Model
      * @param $team_id
      * @return mixed
      * 获取团队信息
-     * 目前相对简陋所以返回数组格式
      */
     public function getteam($team_id)
     {
@@ -47,7 +46,6 @@ class UserModel extends Model
      * @param $u_id
      * @return mixed
      * 获取员工信息
-     * 目前相对简陋所以返回数组格式
      */
     public function getuser($u_id)
     {

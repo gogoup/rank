@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<div class="span9">
+	
+	<h1 class="page-title">
+		<i class="icon-home"></i>
+		团队信息					
+	</h1>
+	
+	<div class="widget">
+							
+		<div class="widget-header">
+			<i class="icon-signal"></i>
+			<h3>团队修改</h3>
+			<h3><a href="{:U('Home/User/teamadd')}">添加团队</a></h3>
+		</div> <!-- /widget-header -->
+											
+		<div class="widget-content">
+			<form method="post" action="{:U('Home/User/update1')}">
+				<volist name="info" id="vo">
+					<table>
+					    <tbody>
+					    	<tr><td>编号：</td><td><input type="hidden" name="t_id" value="{$vo.t_id}">{$vo.t_id}</td></tr>
+					        <tr><td>团队名：</td><td><input type="text" name="t_name" value="{$vo.t_name}"></td></tr>
+					        <tr>
+					            <td ><br />状态：</td><td><input type="radio" name="t_state" checked="checked" value="1">运作中
+					                <input type="radio" name="t_state" value="0">暂停中
+					            </td>
+					        <tr>
+					        <tr><td style="text-align:center"></tr>
+					            <tr><td> <br />                   
+					                <button class="btn btn-small" type="submit">更新</button>                   
+					                <a href="{:U('Home/User/index')}" class="btn btn-small">返回</a>
+					            </td></tr>
+					        </tr>  
+					    </tbody>
+					</table>
+				</volist>
+			</form>
+		</div>
+	</div>
+</div> <!-- /span9 -->
+
+
