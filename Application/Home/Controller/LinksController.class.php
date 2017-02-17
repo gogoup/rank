@@ -46,6 +46,20 @@ class LinksController extends CommonController
        $this->display();
    }
 
+    public function update()
+    {
+        $l_id=$_POST['l_id'];
+        $link=$_POST['link'];
+        $Links=M('Links');
+        $msg=$Links->where('l_id='.$l_id)->setField('l_link',$link);
+        if($msg){
+            echo 1;
+        }else{
+            echo 0;
+        }
+
+    }
+
 
 
 

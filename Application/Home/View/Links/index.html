@@ -46,15 +46,17 @@
                                             </tr>
                                             </thead>
                                             <tbody>
+                                            <p id="aaa"></p>
                                             <volist name="list1" id="vo1">
                                                 <tr>
                                                     <td>{$vo1.l_id}</td>
-                                                    <td>{$vo1.l_link}</td>
+                                                    <td id="ltr_{$vo1['l_id']}">{$vo1.l_link}</td>
                                                     <td class="action-td" style="width: 16rem;">
                                                         <a href="{:U('Rank/link',array('l_id'=>$vo1['l_id']))}" class="btn btn-small btn-warning" target="_blank">
                                                             排名
                                                         </a>
-                                                        <a href="javascript:;" class="btn btn-small">
+                                                        <input type="hidden" id="updateurl" value="{:U('Links/update')}">
+                                                        <a href="javascript:;" class="btn btn-small" onclick="linkupdate({$vo1['l_id']})">
                                                             修改
                                                         </a>
                                                         <a href="javascript:;" class="btn btn-small ">

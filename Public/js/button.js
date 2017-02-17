@@ -29,7 +29,6 @@ document.getElementById('checkkey').onclick=function(){
         {
             var date=xmlhttp.responseText;
             var date2=eval(date);
-            console.log(date2);
             var html="<tr>";
             for(var i=0; i<date2.length; i++)
             {
@@ -47,3 +46,36 @@ document.getElementById('checkkey').onclick=function(){
     xmlhttp.open("GET",url+"?condition2="+condition2,true);
     xmlhttp.send();
 };
+
+
+// 点击修改按钮变成文本框
+function linkupdate(link_id)
+{
+    var l_link=document.getElementById('ltr_'+link_id).textContent;
+    document.getElementById('ltr_'+link_id).innerHTML="<input id='linked' type='hidden'value='"+l_link+"'><input type='text'id='ipt_" +link_id+"'value='"+l_link+"' onblur='linkupdated("+link_id+")'>";
+}
+
+// 失去焦点后自动修改数据
+function linkupdated(link_id)
+{
+    var url=document.getElementById('updateurl').value;
+    var linked=document.getElementById('linked').value;
+    var html;
+    var x=confirm("确认修改吗？");
+    if(x==true)
+    {
+        var htmll=document.getElementById('ipt_'+link_id).value;
+        $.post(url,{l_id:link_id , link:linked},function(msg){
+            if(msg){
+                  html=htmll;  //有值
+            }else{
+                  html=linked;   //有值
+            }
+            document.getElementById('ltr_'+link_id).innerHTML=html;
+        })
+    }else{
+         html=linked;
+        document.getElementById('ltr_'+link_id).innerHTML=html;
+    }
+
+}
