@@ -14,20 +14,20 @@ MySQL - 5.5.40 : Database - ycranking
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 CREATE DATABASE /*!32312 IF NOT EXISTS*/`ycranking` /*!40100 DEFAULT CHARACTER SET utf8 */;
 
-/*Table structure for table `rank_keywords` */
+/*Table structure for table `rank_keyword` */
 
-DROP TABLE IF EXISTS `rank_keywords`;
+DROP TABLE IF EXISTS `rank_keyword`;
 
-CREATE TABLE `rank_keywords` (
+CREATE TABLE `rank_keyword` (
   `k_id` int(10) NOT NULL AUTO_INCREMENT COMMENT '关键字id',
   `keyword` varchar(255) NOT NULL COMMENT '关键字',
-  `l_id` int(10) DEFAULT NULL COMMENT '所属链接',
+  `p_id` int(10) DEFAULT NULL COMMENT '所属项目',
   PRIMARY KEY (`k_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
-/*Data for the table `rank_keywords` */
+/*Data for the table `rank_keyword` */
 
-insert  into `rank_keywords`(`k_id`,`keyword`,`l_id`) values (1,'一',1),(2,'二',1),(3,'三',2),(4,'四',2),(5,'五',3),(6,'六',4);
+insert  into `rank_keyword`(`k_id`,`keyword`,`p_id`) values (1,'一',1),(2,'二',1),(3,'三',2),(4,'四',2),(5,'五',3),(6,'六',4);
 
 /*Table structure for table `rank_links` */
 
@@ -42,7 +42,7 @@ CREATE TABLE `rank_links` (
 
 /*Data for the table `rank_links` */
 
-insert  into `rank_links`(`l_id`,`l_link`,`p_id`) values (1,'www.1.com',1),(2,'www.2.com',1),(3,'www.3.com',2),(4,'www.4.com',3),(5,'www.5.com',4);
+insert  into `rank_links`(`l_id`,`l_link`,`p_id`) values (1,'www.1.com',1),(2,'www.22.com',1),(3,'www.3.com',2),(4,'www.4.com',3),(5,'www.5.com',4);
 
 /*Table structure for table `rank_project` */
 
@@ -53,11 +53,11 @@ CREATE TABLE `rank_project` (
   `p_name` varchar(255) DEFAULT NULL COMMENT '项目名',
   `team_id` int(10) DEFAULT NULL COMMENT '所属团队',
   PRIMARY KEY (`p_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 /*Data for the table `rank_project` */
 
-insert  into `rank_project`(`p_id`,`p_name`,`team_id`) values (1,'项目1',1),(2,'项目2',1),(3,'项目三',2),(4,'项目四',2);
+insert  into `rank_project`(`p_id`,`p_name`,`team_id`) values (1,'项目1',1),(2,'项目2',1),(3,'项目三',2),(4,'项目四',2),(5,'项目五',3),(6,'项目六',3);
 
 /*Table structure for table `rank_ranking` */
 
@@ -70,15 +70,16 @@ CREATE TABLE `rank_ranking` (
   `browser` varchar(255) DEFAULT NULL COMMENT '搜索引擎',
   `time` date DEFAULT NULL COMMENT '日期',
   `keyword` varchar(255) DEFAULT NULL COMMENT '关键字',
+  `k_id` int(10) DEFAULT NULL COMMENT '关键字排名',
   `link` varchar(255) DEFAULT NULL COMMENT '连接',
   `l_id` int(10) DEFAULT NULL COMMENT '链接ID',
   `rank` int(10) DEFAULT NULL COMMENT '排名',
   PRIMARY KEY (`r_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 /*Data for the table `rank_ranking` */
 
-insert  into `rank_ranking`(`r_id`,`p_name`,`p_id`,`browser`,`time`,`keyword`,`link`,`l_id`,`rank`) values (1,'仙姑1',NULL,'搜狗','2017-02-14',NULL,NULL,NULL,NULL);
+insert  into `rank_ranking`(`r_id`,`p_name`,`p_id`,`browser`,`time`,`keyword`,`k_id`,`link`,`l_id`,`rank`) values (1,'仙姑1',1,'搜狗','2017-02-14','一',1,'www.1.com',1,33),(2,'一哈',1,'搜狗','2017-02-21','二',2,'www.4.com',4,22),(3,'而哈',3,'搜狗','2017-02-14','一',1,'www.1.com',1,33),(4,'三合',4,'搜狗','2017-02-14','二',2,'www.3.com',3,44),(5,'死哈',5,'搜狗','2017-02-14','一',1,'www.1.com',2,55),(6,'呜啊',1,'百度','2017-03-11','一',1,'www.2.com',1,22),(7,'仙姑1',1,'百度','2017-02-13','一',1,'www.1.com',1,11),(8,'仙姑1',1,'百度','2017-02-14','一',1,'www.2.com',1,1),(9,NULL,1,NULL,'2017-02-13',NULL,1,NULL,2,74),(10,NULL,1,NULL,'2017-02-14',NULL,1,NULL,2,14),(11,NULL,1,NULL,'2017-02-09',NULL,1,NULL,3,23),(12,NULL,1,NULL,'2017-02-20',NULL,1,NULL,4,41),(13,NULL,1,NULL,'2017-02-04',NULL,1,NULL,2,2),(14,NULL,1,NULL,'2017-02-11',NULL,1,NULL,5,44),(15,NULL,1,NULL,'2017-02-28',NULL,1,NULL,7,25),(16,NULL,1,NULL,'2017-03-08',NULL,1,NULL,8,32);
 
 /*Table structure for table `rank_role` */
 
@@ -102,7 +103,8 @@ CREATE TABLE `rank_team` (
   `t_id` int(10) NOT NULL AUTO_INCREMENT,
   `t_name` varchar(255) DEFAULT NULL,
   `t_state` enum('0','1') DEFAULT NULL COMMENT '团队状态 0：禁用 1：启用',
-  PRIMARY KEY (`t_id`)
+  PRIMARY KEY (`t_id`),
+  UNIQUE KEY `t_name` (`t_name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 /*Data for the table `rank_team` */
