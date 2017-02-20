@@ -65,7 +65,7 @@ function linkupdated(link_id)
     if(x==true)
     {
         var htmll=document.getElementById('ipt_'+link_id).value;
-        $.post(url,{l_id:link_id , link:linked},function(msg){
+        $.post(url,{l_id:link_id , link:htmll},function(msg){
             if(msg){
                   html=htmll;  //有值
             }else{
