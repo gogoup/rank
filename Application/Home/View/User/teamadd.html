@@ -11,9 +11,10 @@
             <form method="post" action="{:U('Home/User/teamadda')}">
             <table>
                 <tbody>
+                    <tr><td>编 &nbsp; 号：<input type="hidden" name="u_id" value="{$vo.u_id}">{$vo.u_id}</td></tr>
                     <tr><td>团队名：<input type="text" name="t_name"></td></tr>
                     <tr>
-                        <td ><br />状态：<input type="radio" name="t_state" checked="checked" value="1">运作中
+                        <td ><br />状 &nbsp; 态：<input type="radio" name="t_state" checked="checked" value="1">运作中
                             <input type="radio" name="t_state" value="0">暂停中
                         </td>
                     <tr>

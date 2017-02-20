@@ -11,7 +11,11 @@
 		<div class="widget-header">
 			<i class="icon-signal"></i>
 			<h3>团队信息</h3>
-			<h3><a href="{:U('Home/User/teamadd')}">添加团队</a></h3>
+			<!-- <h3><a href="{:U('Home/User/teamadd')}">添加团队</a></h3> -->
+			<if condition="$_SESSION['userinfo']['r_id'] lt 2">
+                <h3><a href="{:U('Home/User/teamadd')}">添加团队</a></h3>
+            <else />
+            </if>
 		</div> <!-- /widget-header -->
 											
 		<div class="widget-content">
@@ -29,10 +33,11 @@
 				<tbody>
 					<php>$t_state=array("0"=>"停用","1"=>"启用");</php>
 					<volist name="info" id="vo" key="k">
-						
 						<tr>
 							<td style="text-align:center">{$vo.t_id}</td>
-							<td style="text-align:center"><a href="{:U('Home/User/user',array('team_id'=>$vo['t_id']))}">{$vo.t_name}</a></td>
+							<td style="text-align:center">
+								<a href="{:U('Home/User/user',array('team_id'=>$vo['t_id']))}">{$vo.t_name}</a>
+							</td>
 							
 							<td style="text-align:center">
 		                        <if condition="$vo.t_state eq 1">

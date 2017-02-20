@@ -39,10 +39,21 @@
                 <i class="icon-pushpin"></i>
               成员管理
             </a>
+            <if condition="$_SESSION['userinfo']['r_id'] lt 2">
+                <a href="{:U('Home/User/index')}">
+                    <i class="icon-pushpin"></i>成员管理
+                </a>
+            <else />
+                <a href="{:U('Home/User/user',array('team_id'=>$team_id))}">
+                    <i class="icon-pushpin"></i>
+                  成员管理
+                </a>
+            </if>
         </li>
 
         <li>
             <a href="{:U('Home/User/user')}">
+            <a href="{:U('Home/User/people',array('u_id'=>$_SESSION['userinfo']['u_id']))}">
                 <i class="icon-th-list"></i>
                 个人信息
             </a>
