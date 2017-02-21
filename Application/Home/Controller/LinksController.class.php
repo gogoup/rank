@@ -67,13 +67,13 @@ class LinksController extends CommonController
             $rankinfo[]=$ranks;
         }
         $day=array(
-            0=>date("Y-m-d",strtotime('-1 day')),
-            1=>date("Y-m-d",strtotime('-2 day')),
-            2=>date("Y-m-d",strtotime('-3 day')),
-            3=>date("Y-m-d",strtotime('-4 day')),
-            4=>date("Y-m-d",strtotime('-5 day')),
-            5=>date("Y-m-d",strtotime('-6 day')),
-            6=>date("Y-m-d",strtotime('-7 day')),
+            0=>date("Y-m-d"),
+            1=>date("Y-m-d",strtotime('-1 day')),
+            2=>date("Y-m-d",strtotime('-2 day')),
+            3=>date("Y-m-d",strtotime('-3 day')),
+            4=>date("Y-m-d",strtotime('-4 day')),
+            5=>date("Y-m-d",strtotime('-5 day')),
+            6=>date("Y-m-d",strtotime('-6 day')),
         );
         $html="<thead>
                     <tr>
