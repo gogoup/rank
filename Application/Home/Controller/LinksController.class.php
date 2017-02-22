@@ -20,7 +20,7 @@ class LinksController extends CommonController
    public function index()
    {
        $where['p_id']=$_GET['p_id'];
-       $project=D('Project')->getProname($where);
+       $project=D('Project')->oneProject($where);
 
        if($_GET['condition1'])
        {
@@ -43,6 +43,7 @@ class LinksController extends CommonController
         }
 
        $this->assign('project',$project);
+       $this->assign('p_id',$_GET['p_id']);
 
 
 
