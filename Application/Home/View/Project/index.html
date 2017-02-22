@@ -20,6 +20,7 @@
                         <thead>
                         <tr>
                             <th>项目Id</th>
+                            <th>项目简称</th>
                             <th>项目名</th>
                             <th>&nbsp;</th>
                         </tr>
@@ -28,6 +29,7 @@
                         <volist name="list" id="project">
                         <tr>
                             <td>{$project.p_id}</td>
+                            <td>{$project.p_card}</td>
                             <td>{$project.p_name}</td>
                             <td class="action-td" style="width: 16rem;">
                                 <a href="{:U('Links/index',array('p_id'=>$project['p_id']))}" class="btn btn-small btn-warning">

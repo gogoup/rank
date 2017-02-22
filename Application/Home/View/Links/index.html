@@ -2,7 +2,7 @@
 
     <h1 class="page-title">
         <i class="icon-pushpin"></i>
-        {$project}
+        {$project.p_name}
     </h1>
 
 
@@ -23,7 +23,7 @@
 
                         </ul>
 
-                        <div class="tab-content">
+                        <div class="tab-content" id="link_contont">
                             <div class="tab-pane active" id="1">
 
                                 <div class="widget widget-table">
@@ -36,7 +36,8 @@
                                         <input type="hidden" id="linkurl" value="{:U('Links/index',array('p_id'=>$list[0]['p_id']))}">
                                         <button id="checklink" type="button" class="btn btn-small btn-warning"
                                                 style="float: right; margin: 0.5rem -18rem 0 0rem">检索</button>
-                                        <button id="export" type="button" class="btn btn-small btn-warning" >导出</button>
+                                        <input type="hidden" value="{:U('Excle/join',array('project'=>$project['p_card'],'type'=>'links'))}" id="joinlinkurl">
+                                        <button id="joinlink" value="{$p_id}" type="button" class="btn btn-small btn-warning" >导入</button>
                                     </div> <!-- /widget-header -->
 
                                     <div class="widget-content">
