@@ -129,13 +129,7 @@ class RankController extends CommonController
     }
 
 
-    public function outrank()
-    {
-        $keywords=M('Keyword');
-        $links=M('Links');
-        $rankno=M('rankno');
 
-    }
 
 
 }
