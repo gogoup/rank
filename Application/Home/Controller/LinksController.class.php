@@ -65,7 +65,9 @@ class LinksController extends CommonController
         {
             $k_id=$value;
             $ranks=$this->Ranking->allRank7($k_id);
-            $rankinfo[]=$ranks;
+            if(!empty($ranks)) {
+                $rankinfo[] = $ranks;
+            }
         }
         $day=array(
             0=>date("Y-m-d"),

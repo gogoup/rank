@@ -1,5 +1,5 @@
 
-    <div class="widget widget-table">
+    <div class="widget widget-table" id="keyword_contont">
 
         <div class="widget-header">
             <i class="icon-th-list"></i>
@@ -7,7 +7,8 @@
             <input type="text" style="float: right; margin: 0.5rem 9rem 0rem -1rem" id="condition2">
             <input type="hidden" id="keyurl" value="{:U('Keyword/index',array('p_id'=>$list[0]['p_id']))}">
             <button id="checkkey" type="button" class="btn btn-small btn-warning" style="float: right; margin: 0.5rem -18rem 0 0rem">检索</button>
-            <button id="export" type="button" class="btn btn-small btn-warning" >导入</button>
+            <input type="hidden" value="{:U('Excle/keywordjoin',array('project'=>$project['p_card'],'type'=>'keyword','p_id'=>$p_id))}" id="joinkeywordurl">
+            <button  type="button" class="btn btn-small btn-warning" id="joinkeyword" >导入</button>
         </div> <!-- /widget-header -->
 
         <div class="widget-content">

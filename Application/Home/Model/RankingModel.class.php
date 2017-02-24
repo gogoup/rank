@@ -14,6 +14,7 @@ class RankingModel extends Model
       foreach($list as $value)
       {
           $rank[$value['time']]=$value['rank'];
+          if(!empty($value['keyword']))
           $rank['keyword']=$value['keyword'];
       }
       return $rank;

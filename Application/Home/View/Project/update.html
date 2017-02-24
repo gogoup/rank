@@ -17,13 +17,13 @@
 
 
             <div class="tab-pane active" id="1">
-                <form id="edit-profile" class="form-horizontal" />
+                <form  class="form-horizontal"  method="post" action="{:U('Project/updated')}" />
                 <fieldset>
 
                     <div class="control-group">
                         <label class="control-label" for="username">项目ID</label>
                         <div class="controls">
-                            <input type="text" class="input-medium disabled" id="p_id" value="goideate" disabled="" />
+                            <input type="text" class="input-medium disabled" id="p_id" value="p_id" readonly="readonly"  name="p_id" />
                             <p class="help-block">Your project ID is for logging in and cannot be changed.</p>
                         </div> <!-- /controls -->
                     </div> <!-- /control-group -->
@@ -32,7 +32,7 @@
                     <div class="control-group">
                         <label class="control-label" for="firstname">项目名称</label>
                         <div class="controls">
-                            <input type="text" class="input-medium" id="firstname" value="p_name" />
+                            <input type="text" class="input-medium" id="firstname" value="p_name" name="p_name" />
                         </div> <!-- /controls -->
                     </div> <!-- /control-group -->
 
@@ -40,7 +40,7 @@
                     <div class="control-group">
                         <label class="control-label" for="lastname">所属团队</label>
                         <div class="controls">
-                            <input type="text" class="input-medium" id="lastname" value="Team" />
+                            <input type="text" class="input-medium" id="lastname" value="Team" name="team" />
                         </div> <!-- /controls -->
                     </div> <!-- /control-group -->
 
@@ -48,7 +48,7 @@
                     <div class="control-group">
                         <label class="control-label" for="email">负责人</label>
                         <div class="controls">
-                            <input type="text" class="input-large" id="email" value="负责人" />
+                            <input type="text" class="input-large" id="email" value="负责人" name="people" />
                         </div> <!-- /controls -->
                     </div> <!-- /control-group -->
 

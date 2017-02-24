@@ -4,10 +4,11 @@ use Think\Controller;
 
 class ExcleController extends CommonController
 {
-    public function join()
+    public function linkjoin()
     {
         $project=$_GET['project'];
         $type=$_GET['type'];
+        $p_id=$_GET['p_id'];
         if ($_FILES["linktab"]["error"]==0)
         {
             $tmp_file = $_FILES ['linktab'] ['tmp_name'];
@@ -34,16 +35,64 @@ class ExcleController extends CommonController
                 $this->error ( '上传失败' );
             }
             $res=$this->read($savePath.$file_name );
-            print_r($res);
-            exit;
-
-
-
-        }else if($_FILES["keywordtab"]["error"]){
-            // 导入keyword 表
+            foreach($res as $value)
+            {
+                $data=array('l_link'=>$value['A'],'p_id'=>$p_id);
+                $msg=M('Links')->add($data);
+                if(!$msg)
+                {
+                    $this->error("NO");
+                }
+            }
         }
-        $this->display();
+        $this->success("YES");
     }
+
+
+    public function keywordjoin()
+    {
+        $project=$_GET['project'];
+        $type=$_GET['type'];
+        $p_id=$_GET['p_id'];
+        if ($_FILES["keywordtab"]["error"]==0)
+        {
+            $tmp_file = $_FILES ['keywordtab'] ['tmp_name'];
+            $file_types = explode ( ".", $_FILES ['keywordtab'] ['name'] );
+            $file_type = $file_types [count ( $file_types ) - 1];
+
+            /*判别是不是.xls文件，判别是不是excel文件*/
+            if (strtolower ( $file_type ) != "xls")
+            {
+                if(strtolower ( $file_type ) != "xlsx") {
+                    $this->error('不是Excel文件，重新上传');
+                }
+            }
+            /*设置上传路径*/
+            $savePath = 'data/Upload/Excel/';
+            /*以时间+类型来命名上传的文件*/
+            //  links  域名    keyword  关键词
+            $str = date ( 'Ymd' );
+            $file_name = $project.$type.$str.".".$file_type;
+            $a= $savePath . $file_name;
+            /*是否上传成功*/
+            if (!move_uploaded_file( $tmp_file, $savePath . $file_name ))
+            {
+                $this->error ( '上传失败' );
+            }
+            $res=$this->read($savePath.$file_name );
+            foreach($res as $value)
+            {
+                $data=array('keyword'=>$value['A'],'p_id'=>$p_id);
+                $msg=M('Keyword')->add($data);
+                if(!$msg)
+                {
+                    $this->error("NO");
+                }
+            }
+        }
+        $this->success("YES");
+    }
+
 
     public function read($file,$encode='utf-8')
     {

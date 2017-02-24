@@ -4,6 +4,9 @@ use Think\Controller;
 
 class RankController extends CommonController
 {
+    /**
+     * 域名排名
+     */
     public function link()
     {
         layout(false);
@@ -45,9 +48,9 @@ class RankController extends CommonController
     }
 
 
-
-
-
+    /**
+     * 关键字排名
+     */
     public function keyword()
     {
         layout(false);
@@ -87,6 +90,51 @@ class RankController extends CommonController
         $this->assign('time',$old);
 
         $this->display();
+    }
+
+
+    public function deltab()
+    {
+        echo "<script>alert('此操作为不可逆操作，请点击确认继续。')</script>";
+        $con=mysql_connect('localhost','root','root');
+        if (!$con)
+        {
+            die('Could not connect: ' . mysql_error());
+        }
+        mysql_select_db('ycranking',$con);
+        $time=date('Y-m-d');
+        $sql="alter table `rank_ranking` rename `ranking".$time."`";
+        $a=mysql_query($sql);
+        if($a) {
+            $createTab = "CREATE TABLE `rank_ranking` (
+                        `r_id` int(10) NOT NULL AUTO_INCREMENT COMMENT '排名id',
+                        `p_name` varchar(255) DEFAULT NULL COMMENT '项目名',
+                        `p_id` int(10) DEFAULT NULL COMMENT '项目ID',
+                        `browser` varchar(255) DEFAULT NULL COMMENT '搜索引擎',
+                        `time` date DEFAULT NULL COMMENT '日期',
+                        `keyword` varchar(255) DEFAULT NULL COMMENT '关键字',
+                        `k_id` int(10) DEFAULT NULL COMMENT '关键字排名',
+                        `link` varchar(255) DEFAULT NULL COMMENT '连接',
+                        `l_id` int(10) DEFAULT NULL COMMENT '链接ID',
+                        `rank` int(10) DEFAULT NULL COMMENT '排名',
+                         PRIMARY KEY (`r_id`)
+                        ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8";
+            $b = mysql_query($createTab);
+            if ($b)
+            {
+                $this->success("排名表已清空，数据库备份为  ranking".$time);
+            }
+        }
+        mysql_close($con);
+    }
+
+
+    public function outrank()
+    {
+        $keywords=M('Keyword');
+        $links=M('Links');
+        $rankno=M('rankno');
+
     }
 
 
