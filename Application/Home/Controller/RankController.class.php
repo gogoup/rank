@@ -95,7 +95,6 @@ class RankController extends CommonController
 
     public function deltab()
     {
-        echo "<script>alert('此操作为不可逆操作，请点击确认继续。')</script>";
         $con=mysql_connect('localhost','root','root');
         if (!$con)
         {
@@ -122,8 +121,10 @@ class RankController extends CommonController
             $b = mysql_query($createTab);
             if ($b)
             {
-                $this->success("排名表已清空，数据库备份为  ranking".$time);
+                echo true;
             }
+        }else{
+            echo false;
         }
         mysql_close($con);
     }

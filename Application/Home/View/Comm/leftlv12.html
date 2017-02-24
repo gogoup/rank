@@ -55,11 +55,28 @@
         </li>
         <li>
         <if condition="$_SESSION['userinfo']['r_id'] eq 1">
-            <a href="{:U('Home/Rank/deltab')}">
+            <input type="hidden" value="{:U('Home/Rank/deltab')}" id="deltaburl">
+            <a id="deltab" onclick="del()">
                 <i class="icon-pushpin"></i>清空排名
             </a>
         </if>
         </li>
     </ul>
+    <script type="text/javascript">
+        function del() {
+            var url = document.getElementById('deltaburl').value;
+            var x = confirm("该操作会删除现有排名数据，确定操作吗？")
+            if (x) {
+                $.post(url,{}, function(msg) {
+                    if (msg) {
+                        alert("删除成功");
+                    }else{
+                        alert('NO,你已经删除过了');
+                    }
+                })
+            }
+        }
+    </script>
+
 
 </div> <!-- /span3 -->
