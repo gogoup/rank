@@ -124,14 +124,14 @@ function linkupdated(link_id)
 //====================================== 链 接 删 除 部 分 =======================================================
 function linkdel(l_id)
 { 
-    var lurl=document.getElementById('delurl').value;
+    var url=document.getElementById('delurl').value;
     // alert(url);
     // alert(l_id);exit();
 
     var x=confirm("确认删除吗？");
     if(x==true)
     {
-        $.post(lurl,{l_id:l_id},function(msg){
+        $.post(url,{l_id:l_id},function(msg){
             if(msg){
                 window.location.reload(true);
             }else{
@@ -148,14 +148,14 @@ function linkdel(l_id)
 //====================================== 关 键 字 删 除 部 分 =======================================================
 function keydel(k_id)
 { 
-    var kurl=document.getElementById('kdelurl').value;
+    var url=document.getElementById('kdelurl').value;
     // alert(url);
-    // alert(l_id);exit();
+    // alert(k_id);exit();
 
     var x=confirm("确认删除吗？");
     if(x==true)
     {
-        $.post(kurl,{k_id:k_id},function(msg){
+        $.post(url,{k_id:k_id},function(msg){
             if(msg){
                 window.location.reload(true);
             }else{
