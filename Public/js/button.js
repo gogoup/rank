@@ -85,36 +85,86 @@ function linkupdated(link_id)
 
 //====================================== 关 键 词 部 分=======================================================
 // 点击修改按钮变成文本框
-function keyupdate(key_id)
+function linkupdate(link_id)
 {
-    var keyword=document.getElementById('ltr_'+key_id).textContent;
-    document.getElementById('ltr_'+key_id).innerHTML="<input id='keyed' type='hidden'value='"+keyword+"'><input type='text'id='ipt_" +key_id+"'value='"+keyword+"' onblur='keyupdated("+key_id+")'>";
+    var l_link=document.getElementById('ltr_'+link_id).textContent;
+    document.getElementById('ltr_'+link_id).innerHTML="<input id='linked' type='hidden'value='"+l_link+"'><input type='text'id='ipt_" +link_id+"'value='"+l_link+"' onblur='linkupdated("+link_id+")'>";
   
 }
 
 // 失去焦点后自动修改数据
-function keyupdated(key_id)
+function linkupdated(link_id)
 {
 
-    var url=document.getElementById('keyupdateurl').value;
-    var keyed=document.getElementById('keyed').value;
+    var url=document.getElementById('updateurl').value;
+    var linked=document.getElementById('linked').value;
     var html;
     var x=confirm("确认修改吗？");
     if(x==true)
     {
-        var htmll=document.getElementById('ipt_'+key_id).value;
+        var htmll=document.getElementById('ipt_'+link_id).value;
 
-        $.post(url,{k_id:key_id,key:htmll},function(msg){
+        $.post(url,{l_id:link_id,link:htmll},function(msg){
             if(msg){
-                  html=htmll;
+                  html=htmll;  //有值
             }else{
-                  html=linked;
+                  html=linked;   //有值
             }
-            document.getElementById('ltr_'+key_id).innerHTML=html;
+            document.getElementById('ltr_'+link_id).innerHTML=html;
+        })
+    }else{
+         html=linked;
+        document.getElementById('ltr_'+link_id).innerHTML=html;
+    }
+
+}
+
+
+
+//====================================== 链 接 删 除 部 分 =======================================================
+function linkdel(l_id)
+{ 
+    var lurl=document.getElementById('delurl').value;
+    // alert(url);
+    // alert(l_id);exit();
+
+    var x=confirm("确认删除吗？");
+    if(x==true)
+    {
+        $.post(lurl,{l_id:l_id},function(msg){
+            if(msg){
+                window.location.reload(true);
+            }else{
+                html=link;
+            }
         })
     }else{
         html=keyed;
-        document.getElementById('ltr_'+key_id).innerHTML=html;
+        document.getElementById('ltr_'+l_id).innerHTML=html;
     }
+  
+}
 
+//====================================== 关 键 字 删 除 部 分 =======================================================
+function keydel(k_id)
+{ 
+    var kurl=document.getElementById('kdelurl').value;
+    // alert(url);
+    // alert(l_id);exit();
+
+    var x=confirm("确认删除吗？");
+    if(x==true)
+    {
+        $.post(kurl,{k_id:k_id},function(msg){
+            if(msg){
+                window.location.reload(true);
+            }else{
+                html=keyword;
+            }
+        })
+    }else{
+        html=keyed;
+        document.getElementById('ltr_'+k_id).innerHTML=html;
+    }
+  
 }

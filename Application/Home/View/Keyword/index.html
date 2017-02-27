@@ -29,10 +29,12 @@
                             <a href="{:U('Rank/keyword',array('k_id'=>$vo['k_id'],'p_id'=>$vo['p_id']))}" class="btn btn-small btn-warning" target="_blank">
                                 排名
                             </a>
-                            <a href="javascript:;" class="btn btn-small">
+                            <input type="hidden" id="kupurl" value="{:U('keyword/update')}">
+                            <a href="javascript:;" class="btn btn-small" onclick="keyupdate({$vo1['k_id']})">
                                 修改
                             </a>
-                            <a href="javascript:;" class="btn btn-small ">
+                            <input type="hidden" id="kdelurl" value="{:U('Keyword/del')}">
+                            <a href="javascript:;" class="btn btn-small" onclick="keydel({$vo1['k_id']})">
                                 删除
                             </a>
                         </td>

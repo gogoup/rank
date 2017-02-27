@@ -123,6 +123,18 @@ class LinksController extends CommonController
 
     }
 
+    public function del()
+    {
+        $l_id=$_POST['l_id'];
+        $Links=M('Links');
+        $msg=$Links->where('l_id='.$l_id)->delete();
+        if($msg){
+            echo 1;
+        }else{
+            echo 0;
+        }
+
+    }
 
 
 

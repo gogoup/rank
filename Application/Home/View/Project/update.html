@@ -14,56 +14,64 @@
         </div> <!-- /widget-header -->
 
         <div class="widget-content">
+            <form id="edit-profile" class="form-horizontal"  method="post" action="{:U('Home/Project/update1',array('p_id'=>$p_id))}">
+                <volist name="info" id="vo">
+                    <fieldset>
+
+                        <div class="control-group">
+                            <label class="control-label" for="username">项目编号</label>
+                            <div class="controls">
+                                <input type="text" id="p_id" name="p_id" value="{$vo.p_id}" readonly="readonly"/>
+                            </div> <!-- /controls -->
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label" for="username">项目简称</label>
+                            <div class="controls">
+                                <input type="text" id="p_id" name="p_card" value="{$vo.p_card}"/>
+                            </div> <!-- /controls -->
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label" for="firstname">项目名称</label>
+                            <div class="controls">
+                                <input type="text" id="firstname" name="p_name" value="{$vo.p_name}" />
+                            </div> <!-- /controls -->
+                        </div> <!-- /control-group -->
 
 
-            <div class="tab-pane active" id="1">
-                <form  class="form-horizontal"  method="post" action="{:U('Project/updated')}" />
-                <fieldset>
+                        <div class="control-group">
+                            <label class="control-label">所属团队</label>&nbsp; &nbsp;&nbsp;
+                            <select name="team">
+                                <volist name="teaml" id="aa">
+                                    <if condition="$aa['t_id'] eq $team_id">
+                                        <option selected="selected" value="{$aa.t_id}">{$aa.t_name}</option>
+                                    <else />
+                                        <option value="{$aa.t_id}">{$aa.t_name}</option>
+                                    </if>
+                                </volist>
+                            </select>
+                        </div> 
+                            
+                        <div class="control-group">
+                            <label class="control-label">负责人</label>&nbsp; &nbsp;&nbsp;
+                            <select name="user">
+                                <volist name="list" id="vv">
+                                    <option selected="selected" value="{$vv.u_id}">{$vv.u_name}</option>
+                                </volist>
+                            </select>
+                        </div> <!-- /control-group -->
+                        
+                        <br />
+                        <br />
 
-                    <div class="control-group">
-                        <label class="control-label" for="username">项目ID</label>
-                        <div class="controls">
-                            <input type="text" class="input-medium disabled" id="p_id" value="p_id" readonly="readonly"  name="p_id" />
-                            <p class="help-block">Your project ID is for logging in and cannot be changed.</p>
-                        </div> <!-- /controls -->
-                    </div> <!-- /control-group -->
-
-
-                    <div class="control-group">
-                        <label class="control-label" for="firstname">项目名称</label>
-                        <div class="controls">
-                            <input type="text" class="input-medium" id="firstname" value="p_name" name="p_name" />
-                        </div> <!-- /controls -->
-                    </div> <!-- /control-group -->
-
-
-                    <div class="control-group">
-                        <label class="control-label" for="lastname">所属团队</label>
-                        <div class="controls">
-                            <input type="text" class="input-medium" id="lastname" value="Team" name="team" />
-                        </div> <!-- /controls -->
-                    </div> <!-- /control-group -->
-
-
-                    <div class="control-group">
-                        <label class="control-label" for="email">负责人</label>
-                        <div class="controls">
-                            <input type="text" class="input-large" id="email" value="负责人" name="people" />
-                        </div> <!-- /controls -->
-                    </div> <!-- /control-group -->
-
-                    <br />
-                    <br />
-
-                    <div class="form-actions">
-                        <button type="submit" class="btn btn-primary">Save</button>
-                        <button class="btn">Back</button>
-                    </div> <!-- /form-actions -->
-                </fieldset>
-                </form>
-            </div>
-
-
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">更新</button>
+                            <a type="button" class="btn" href="{:U('Home/Project/index')}">返回</a>
+                        </div> <!-- /form-actions -->
+                    </fieldset>
+                </volist>
+            </form>
         </div> <!-- /widget-content -->
     </div>
 </div> <!-- /span9 -->

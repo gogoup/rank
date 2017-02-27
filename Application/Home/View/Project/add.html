@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<div class="span9">
+
+    <h1 class="page-title">
+        <i class="icon-home"></i>
+        项目管理
+    </h1>
+
+    <div class="widget">
+
+        <div class="widget-header">
+            <i class="icon-signal"></i>
+            <h3>项目添加</h3>
+        </div> <!-- /widget-header -->
+
+        <div class="widget-content">
+            <form id="edit-profile" class="form-horizontal"  method="post" action="{:U('Home/Project/adda')}">
+                <fieldset>
+                    <div class="control-group">
+                        <label class="control-label" for="username">项目简称</label>
+                        <div class="controls">
+                            <input type="text" id="p_id" name="p_card" value="{$vo.p_card}"/>
+                        </div> <!-- /controls -->
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="firstname">项目名称</label>
+                        <div class="controls">
+                            <input type="text" id="firstname" name="p_name" value="{$vo.p_name}" />
+                        </div> <!-- /controls -->
+                    </div> <!-- /control-group -->
+
+
+                    <div class="control-group">
+                        <label class="control-label">所属团队</label>&nbsp; &nbsp;&nbsp;
+                        <select name="team">
+                            <volist name="info" id="vo">
+                                <option selected="selected" value="{$vo.t_id}">{$vo.t_name}</option>
+                            </volist>
+                        </select>
+                    </div> 
+                        
+                    <div class="control-group">
+                        <label class="control-label">负责人</label>&nbsp; &nbsp;&nbsp;
+                        <select name="user">
+                            <volist name="list" id="vv">
+                                <option selected="selected" value="{$vv.u_id}">{$vv.u_name}</option>
+                            </volist>
+                        </select>
+                    </div> <!-- /control-group -->
+                    
+                    <br />
+                    <br />
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">更新</button>
+                        <a type="button" class="btn" href="{:U('Home/Project/index')}">返回</a>
+                    </div> <!-- /form-actions -->
+                </fieldset>
+            </form>
+        </div> <!-- /widget-content -->
+    </div>
+</div> <!-- /span9 -->

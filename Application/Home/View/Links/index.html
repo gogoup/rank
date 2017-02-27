@@ -61,7 +61,8 @@
                                                         <a href="javascript:;" class="btn btn-small" onclick="linkupdate({$vo1['l_id']})">
                                                             修改
                                                         </a>
-                                                        <a href="javascript:;" class="btn btn-small ">
+                                                        <input type="hidden" id="delurl" value="{:U('Links/del')}">
+                                                        <a href="javascript:;" class="btn btn-small" onclick="linkdel({$vo1['l_id']})">
                                                             删除
                                                         </a>
                                                     </td>

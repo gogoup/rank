@@ -24,4 +24,45 @@ class KeywordController extends Controller
             $this->assign('list',$list);
         }
     }
+
+    // public function update()
+    // {
+    //     $k_id=$_POST['k_id'];
+    //     $keyword=$_POST['keyword'];
+    //     $keyword=M('Keyword');
+    //     $msg=$keyword->where('k_id='.$k_id)->setField('keyword',$keyword);
+    //     if($msg){
+    //         echo 1;
+    //     }else{
+    //         echo 0;
+    //     }
+    // }
+
+    public function update()
+    {
+        $k_id=$_POST['k_id'];
+        $link=$_POST['link'];
+        $keyword=M('Keyword');
+        $msg=$keyword->where('k_id='.$k_id)->setField('l_link',$link);
+        if($msg){
+            echo 1;
+        }else{
+            echo 0;
+        }
+
+    }
+
+    //======================== = 删 除 = ===================================================
+    public function del()
+    {
+        $k_id=$_POST['k_id'];
+        $keyword=M('Keyword');
+        $msg=$keyword->where('k_id='.$k_id)->delete();
+        if($msg){
+            echo 1;
+        }else{
+            echo 0;
+        }
+
+    }
 }
