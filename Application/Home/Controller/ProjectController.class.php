@@ -174,7 +174,6 @@ class ProjectController extends  CommonController
     public function del()
     {
         $a = $_GET['p_id'];
-        // echo $p_id;exit();
         $Project = M('Project');
         $Project->startTrans();//启动事务 
 
@@ -185,13 +184,7 @@ class ProjectController extends  CommonController
         $count = $keyword->where('p_id='.$a)->count();
         $count1 = $link->where('p_id='.$a)->count();
 
-        echo $n = "<script>confirm('里面的数组什么的都确定删除么？')</script>";
-        echo $n;exit();
-        if ($n=true) {
-           echo "1";exit();
-        }else{
-            echo "22222222222";exit();
-        }
+        //  echo $n = "<script>confirm(你确定所有数据都要删除么？')</script>";
 
         if ($count==0) {
             if ($count1==0) {

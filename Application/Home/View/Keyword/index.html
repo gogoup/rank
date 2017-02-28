@@ -24,7 +24,7 @@
                 <volist name="list" id="vo">
                     <tr>
                         <td>{$vo.k_id}</td>
-                        <td>{$vo.keyword}</td>
+                        <td id="ltr_{$vo['k_id']}">{$vo.keyword}</td>
                         <td class="action-td" style="width: 16rem;">
                             <a href="{:U('Rank/keyword',array('k_id'=>$vo['k_id'],'p_id'=>$vo['p_id']))}" class="btn btn-small btn-warning" target="_blank">
                                 排名

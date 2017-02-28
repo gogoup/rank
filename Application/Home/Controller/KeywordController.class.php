@@ -41,15 +41,14 @@ class KeywordController extends Controller
     public function update()
     {
         $k_id=$_POST['k_id'];
-        $link=$_POST['link'];
+        $key=$_POST['key'];
         $keyword=M('Keyword');
-        $msg=$keyword->where('k_id='.$k_id)->setField('l_link',$link);
+        $msg=$keyword->where('k_id='.$k_id)->setField('keyword',$key);
         if($msg){
-            echo 1;
+            echo 'true';
         }else{
-            echo 0;
+            echo 'false';
         }
-
     }
 
     //======================== = 删 除 = ===================================================
