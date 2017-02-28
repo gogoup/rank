@@ -101,8 +101,9 @@ class RankController extends CommonController
             die('Could not connect: ' . mysql_error());
         }
         mysql_select_db('ycranking',$con);
+        mysql_query("set names utf8");
         $time=date('Y-m-d');
-        $sql="alter table `rank_ranking` rename `ranking".$time."`";
+        $sql="alter table `rank_ranking` rename `ranking".$time."4`";
         $a=mysql_query($sql);
         if($a) {
             $createTab = "CREATE TABLE `rank_ranking` (
